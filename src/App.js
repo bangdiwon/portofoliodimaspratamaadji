@@ -5,7 +5,7 @@ import "./App.css";
 function App() {
   // --- KONFIGURASI PENCETAKAN PDF ---
   const { toPDF, targetRef } = usePDF({
-    filename: "Portofolio_DimasPratamaAdji.pdf",
+    filename: "CV_DIMAS.pdf",
   });
 
   return (
