@@ -168,7 +168,7 @@ function App() {
             rel="noopener noreferrer"
             className="experience-card">
             <img
-              src="/project-web.png"
+              src="/project-onjob.png"
               alt="Web Specialist On Job"
               className="project-img"
             />
