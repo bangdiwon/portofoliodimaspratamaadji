@@ -36,8 +36,8 @@ function App() {
           </a>
 
           <a
-            href="/CV_DimasPratamaAdji_FreshGraduate.pdf"
-            download="CV_DimasPratamaAdji_FreshGraduate.pdf"
+            href="CV_DIMAS.pdf"
+            download="CV_DIMAS.pdf"
             className="cta-button outline">
             Unduh CV Asli
           </a>
