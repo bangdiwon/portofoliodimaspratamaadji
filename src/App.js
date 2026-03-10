@@ -281,9 +281,9 @@ function App() {
               />
             </div>
             <div className="cert-content">
-              <h3>Sertifikasi Kompetensi Web Development</h3>
-              <p className="cert-issuer">Lembaga Sertifikasi Profesi</p>
-              <p className="cert-date">2025</p>
+              <h3>Progate x Himti Budi Luhur Coding Bootcamp</h3>
+              <p className="cert-issuer">Progate</p>
+              <p className="cert-date">2022</p>
             </div>
           </div>
 
@@ -296,9 +296,9 @@ function App() {
               />
             </div>
             <div className="cert-content">
-              <h3>SEO & WordPress Masterclass</h3>
-              <p className="cert-issuer">Udemy Professional</p>
-              <p className="cert-date">2024</p>
+              <h3>Frontend Development</h3>
+              <p className="cert-issuer">MySkill</p>
+              <p className="cert-date">2023</p>
             </div>
           </div>
 
@@ -311,9 +311,9 @@ function App() {
               />
             </div>
             <div className="cert-content">
-              <h3>SEO & WordPress Masterclass</h3>
-              <p className="cert-issuer">Udemy Professional</p>
-              <p className="cert-date">2024</p>
+              <h3>Social Media Strategy</h3>
+              <p className="cert-issuer">MySkill</p>
+              <p className="cert-date">2023</p>
             </div>
           </div>
 
@@ -326,9 +326,9 @@ function App() {
               />
             </div>
             <div className="cert-content">
-              <h3>SEO & WordPress Masterclass</h3>
-              <p className="cert-issuer">Udemy Professional</p>
-              <p className="cert-date">2024</p>
+              <h3>UI/UX Fundamental</h3>
+              <p className="cert-issuer">MySkill</p>
+              <p className="cert-date">2023</p>
             </div>
           </div>
 
@@ -341,9 +341,9 @@ function App() {
               />
             </div>
             <div className="cert-content">
-              <h3>Frontend Developer React.js</h3>
-              <p className="cert-issuer">Dicoding Indonesia</p>
-              <p className="cert-date">2024</p>
+              <h3>Introduction To Data Analyst</h3>
+              <p className="cert-issuer">MySkill</p>
+              <p className="cert-date">2023</p>
             </div>
           </div>
         </div>
