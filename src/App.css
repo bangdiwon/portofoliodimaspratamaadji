@@ -658,4 +658,78 @@ footer {
   .service-item p {
     padding-left: 0;
   }
+  /* ========================================================
+   --- KONFIGURASI CETAK PDF & PRINT MEDIA --- 
+   ======================================================== */
+  @media print {
+    /* 1. Paksa warna background dan gradient tetap muncul */
+    body,
+    .hero-section,
+    .about-section,
+    .experience-card,
+    .cert-card-v2,
+    .skill-box {
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+
+    /* 2. Sembunyikan elemen yang tidak perlu di PDF (tombol CTA) */
+    .cta-group {
+      display: none !important;
+    }
+
+    /* 3. Hindari elemen terpotong (kepotong separuh) di pergantian halaman */
+    .experience-card,
+    .achievement-card,
+    .cert-card-v2,
+    .about-grid,
+    .services-container,
+    .education-card {
+      page-break-inside: avoid !important;
+      break-inside: avoid !important;
+      margin-bottom: 20px !important; /* Jarak aman antar kartu */
+    }
+
+    /* 4. Sesuaikan padding dan margin untuk menghindari blank space */
+    section {
+      padding: 30px 10px !important;
+      margin: 0 auto !important;
+    }
+
+    /* 5. Perbaikan Hero Section */
+    .hero-section {
+      padding: 60px 20px 40px !important;
+      /* Hilangkan clip-path karena sering membuat ruang kosong aneh saat dicetak PDF */
+      clip-path: none !important;
+      margin-bottom: 20px !important;
+    }
+
+    /* 6. Atur Grid agar rapi meskipun dicetak dari HP */
+    /* Jika dari HP biasa jadi 1 kolom memanjang, kita paksa jadi 2 kolom di PDF agar hemat halaman */
+    .experience-grid,
+    .achievements-grid,
+    .certifications-grid {
+      display: grid !important;
+      grid-template-columns: repeat(2, 1fr) !important;
+      gap: 20px !important;
+    }
+
+    .about-grid {
+      grid-template-columns: 1fr !important;
+      gap: 20px !important;
+    }
+
+    /* 7. Penyesuaian Font dan Shadow (Shadow sering berantakan di PDF) */
+    * {
+      box-shadow: none !important;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    p {
+      page-break-after: avoid; /* Jangan memutus halaman tepat setelah judul */
+    }
+  }
 }

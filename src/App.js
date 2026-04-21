@@ -5,7 +5,11 @@ import "./App.css";
 function App() {
   // --- KONFIGURASI PENCETAKAN PDF ---
   const { toPDF, targetRef } = usePDF({
-    filename: "CV_DIMAS.pdf",
+    filename: "PORTOFOLIO_DIMAS.pdf",
+    page: {
+      format: "A4", // Memaksa format A4
+      margin: 15, // Memberikan margin agar konten tidak terlalu mepet tepi
+    },
   });
 
   return (
