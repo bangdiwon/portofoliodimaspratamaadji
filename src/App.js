@@ -26,8 +26,8 @@ function App() {
 
         <h1>DIMAS PRATAMA ADJI</h1>
         <h2>
-          Web Development | WordPress & E-commerce Specialist | SEO Enthusiast |
-          Information System Graduate
+          Web Development | Asset Management | SEO Enthusiast | Information
+          System
         </h2>
         <p>
           Lulusan Sarjana Sistem Informasi dari Universitas Budi Luhur dengan
