@@ -18,7 +18,7 @@ function App() {
       <header className="hero-section">
         <div className="profile-wrapper">
           <img
-            src="/profil.jpg"
+            src="/profil.jpeg"
             alt="Dimas Pratama Adji"
             className="profile-img"
           />
