@@ -29,10 +29,7 @@ function App() {
           Web Development | Asset Management | SEO Enthusiast | Information
           System
         </h2>
-        <p>
-          Lulusan Sarjana Sistem Informasi dari Universitas Budi Luhur dengan
-          spesialisasi pengembangan web menggunakan WordPress.
-        </p>
+        <p>Selamat datang di portofolio saya</p>
 
         <div className="cta-group">
           <a href="#contact" className="cta-button">
@@ -58,12 +55,12 @@ function App() {
           <div>
             <h2>Latar Belakang</h2>
             <p>
-              Saya memiliki rekam jejak dalam merancang solusi digital, mulai
-              dari platform e-commerce hingga sistem informasi layanan
-              masyarakat. Saya ahli dalam kustomisasi tema, optimasi SEO, dan
-              integrasi API untuk meningkatkan performa bisnis. Secara personal,
-              saya berorientasi pada detail, analitis, dan memiliki kemampuan
-              pemecahan masalah teknis yang kuat.
+              Saya adalah seorang lulusan Sistem Informasi yang berfokus pada
+              penciptaan solusi digital berbasis data. Saya menggabungkan
+              keahlian dalam rekayasa perangkat lunak (SDLC), manajemen
+              database, dan optimasi sistem untuk membangun aplikasi yang tidak
+              hanya berfungsi dengan baik, tetapi juga memberikan dampak nyata
+              bagi bisnis dan pengguna.
             </p>
           </div>
           <div>
