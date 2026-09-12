@@ -2,21 +2,23 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700;800&display=swap");
 
 :root {
-  /* Palet Warna Modern Tech */
-  --bg-main: #f8fafc;
-  --bg-dark: #0f172a;
-  --primary-color: #2563eb;
-  --secondary-color: #06b6d4;
-  --text-main: #334155;
+  /* Palet Warna Dark Tech / Elegan */
+  --bg-main: #05070a; /* Hitam pekat kebiruan */
+  --bg-card: #0f1523; /* Warna kartu sedikit lebih terang dari background */
+  --primary-color: #00e5ff; /* Cyan / Neon Blue (Warna Teknologi) */
+  --secondary-color: #4338ca; /* Deep Purple/Blue */
+  --text-main: #94a3b8; /* Teks abu-abu terang */
   --text-light: #64748b;
-  --white: #ffffff;
+  --white: #f8fafc; /* Putih bersih untuk judul */
 
-  /* Efek Bayangan Lembut */
-  --shadow-sm:
-    0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
-  --shadow-lg:
-    0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-  --shadow-hover: 0 25px 50px -12px rgba(37, 99, 235, 0.25);
+  /* Efek Garis & Glow (Bercahaya) */
+  --border-color: rgba(255, 255, 255, 0.08);
+  --border-hover: rgba(0, 229, 255, 0.4);
+  --glow-shadow: 0 0 20px rgba(0, 229, 255, 0.15);
+  --glow-hover: 0 0 35px rgba(0, 229, 255, 0.3);
+
+  --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.6);
 
   --radius-card: 16px;
   --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -42,7 +44,7 @@ h2,
 h3,
 h4 {
   font-family: "Poppins", sans-serif;
-  color: var(--bg-dark);
+  color: var(--white);
   line-height: 1.3;
 }
 
@@ -74,16 +76,17 @@ section h2::after {
   height: 5px;
   background: linear-gradient(
     90deg,
-    var(--primary-color),
-    var(--secondary-color)
+    var(--secondary-color),
+    var(--primary-color)
   );
   margin: 15px auto 0;
   border-radius: 50px;
+  box-shadow: var(--glow-shadow);
 }
 
 /* --- 1. HERO SECTION --- */
 .hero-section {
-  background: linear-gradient(120deg, #0f172a, #1e293b, #0f172a);
+  background: linear-gradient(120deg, #030406, #0a0f18, #030406);
   background-size: 200% 200%;
   animation: bgPan 10s ease-in-out infinite;
   color: var(--white);
@@ -93,6 +96,7 @@ section h2::after {
   margin-bottom: -60px;
   position: relative;
   z-index: 10;
+  border-bottom: 1px solid var(--border-color);
 }
 
 @keyframes bgPan {
@@ -114,14 +118,14 @@ section h2::after {
   justify-content: center;
   align-items: center;
   margin-bottom: 30px;
-  padding: 6px;
+  padding: 4px;
   border-radius: 50%;
   background: linear-gradient(
     135deg,
     var(--secondary-color),
     var(--primary-color)
   );
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+  box-shadow: var(--glow-shadow);
 }
 
 .profile-img {
@@ -131,7 +135,7 @@ section h2::after {
   object-fit: cover;
   object-position: top;
   aspect-ratio: 1 / 1;
-  border: 5px solid var(--bg-dark);
+  border: 4px solid var(--bg-main);
   position: relative;
   z-index: 2;
   transition: transform 0.5s ease;
@@ -147,20 +151,22 @@ section h2::after {
   margin-bottom: 10px;
   color: var(--white);
   letter-spacing: 1px;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
 }
 
 .hero-section h2 {
   font-size: 1.4rem;
   font-weight: 500;
-  color: var(--secondary-color);
+  color: var(--primary-color);
   margin-bottom: 25px;
+  text-shadow: 0 0 10px rgba(0, 229, 255, 0.3);
 }
 
 .hero-section p {
   font-size: 1.15rem;
   max-width: 750px;
   margin: 0 auto 40px;
-  color: #cbd5e1;
+  color: var(--text-main);
 }
 
 /* --- TOMBOL (CTA) --- */
@@ -176,10 +182,10 @@ section h2::after {
   padding: 14px 38px;
   background: linear-gradient(
     90deg,
-    var(--primary-color),
-    var(--secondary-color)
+    var(--secondary-color),
+    var(--primary-color)
   );
-  color: var(--white);
+  color: #fff;
   text-decoration: none;
   border-radius: 50px;
   font-weight: 600;
@@ -187,33 +193,55 @@ section h2::after {
   font-size: 1rem;
   transition: var(--transition);
   border: none;
-  box-shadow: 0 10px 20px rgba(6, 182, 212, 0.3);
+  box-shadow: var(--glow-shadow);
 }
 
 .cta-button:hover {
   transform: translateY(-4px);
-  box-shadow: 0 15px 25px rgba(6, 182, 212, 0.5);
-  color: var(--white);
+  box-shadow: var(--glow-hover);
+  color: #fff;
 }
 
 .cta-button.outline {
-  background: transparent;
-  color: var(--white);
-  border: 2px solid rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
   box-shadow: none;
+  backdrop-filter: blur(5px);
 }
 
 .cta-button.outline:hover {
-  background: var(--white);
-  color: var(--bg-dark);
-  border-color: var(--white);
+  background: rgba(0, 229, 255, 0.1);
+  color: #fff;
+  box-shadow: var(--glow-shadow);
+}
+
+/* --- KOMPONEN KARTU KACA (GLASSMORPHISM) --- */
+.about-section,
+.services-container,
+.experience-card,
+.achievement-card,
+.cert-card-v2,
+.skill-box {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+}
+
+/* Hover Efek Glow pada Semua Kartu */
+.experience-card:hover,
+.achievement-card:hover,
+.cert-card-v2:hover,
+.skill-box:hover {
+  transform: translateY(-8px);
+  border-color: var(--border-hover);
+  box-shadow: var(--glow-hover);
 }
 
 /* --- 2. ABOUT & EDUCATION SECTION --- */
 .about-section {
-  background-color: var(--white);
-  border-radius: var(--radius-card);
-  box-shadow: var(--shadow-lg);
   padding: 70px;
   position: relative;
   z-index: 20;
@@ -240,13 +268,15 @@ section h2::after {
 .education-card {
   background: var(--bg-main);
   padding: 30px;
-  border-left: 6px solid var(--primary-color);
+  border-left: 4px solid var(--primary-color);
   border-radius: 0 var(--radius-card) var(--radius-card) 0;
   transition: var(--transition);
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 .education-card:hover {
-  background: #eff6ff;
+  background: #090e17;
+  border-left-color: var(--white);
 }
 
 .education-card h3 {
@@ -255,21 +285,17 @@ section h2::after {
   margin-bottom: 12px;
 }
 
-/* --- SECTION LAYANAN SAYA (1 FOTO UTAMA) --- */
+/* --- SECTION LAYANAN SAYA --- */
 .services-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 50px;
   align-items: center;
-  background-color: var(--white);
   padding: 50px;
-  border-radius: var(--radius-card);
-  box-shadow: var(--shadow-lg);
-  border: 1px solid #e2e8f0;
 }
 
 .services-image {
-  display: block; /* Penting karena sekarang menjadi link */
+  display: block;
   cursor: pointer;
 }
 
@@ -279,7 +305,7 @@ section h2::after {
   min-height: 350px;
   object-fit: cover;
   border-radius: 12px;
-  box-shadow: var(--shadow-sm);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
   transition: transform 0.5s ease;
 }
 
@@ -297,18 +323,16 @@ section h2::after {
   font-size: 1.3rem;
   color: var(--primary-color);
   margin-bottom: 10px;
-  display: flex;
-  align-items: center;
+  text-shadow: 0 0 10px rgba(0, 229, 255, 0.2);
 }
 
 .service-item p {
   color: var(--text-main);
   font-size: 1rem;
   line-height: 1.6;
-  padding-left: 0;
 }
 
-/* --- 3. EXPERIENCE & PROJECT SECTION (Bisa Diklik) --- */
+/* --- 3. EXPERIENCE & PROJECT SECTION --- */
 .experience-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -316,25 +340,12 @@ section h2::after {
 }
 
 .experience-card {
-  background-color: var(--white);
-  border-radius: var(--radius-card);
-  box-shadow: var(--shadow-sm);
   padding: 30px;
-  transition: var(--transition);
-  border: 1px solid #e2e8f0;
   display: flex;
   flex-direction: column;
-
-  /* Reset gaya bawaan link agar tidak biru & tidak bergaris bawah */
   text-decoration: none;
   color: inherit;
   cursor: pointer;
-}
-
-.experience-card:hover {
-  transform: translateY(-8px);
-  box-shadow: var(--shadow-hover);
-  border-color: #bfdbfe;
 }
 
 .experience-card img.project-img {
@@ -344,28 +355,31 @@ section h2::after {
   border-radius: 10px;
   margin-bottom: 25px;
   transition: transform 0.6s ease;
+  filter: brightness(0.85) contrast(1.1);
 }
 
 .experience-card:hover img.project-img {
   transform: scale(1.03);
+  filter: brightness(1) contrast(1.1);
 }
 
 .experience-card h3 {
   font-size: 1.4rem;
   margin-bottom: 10px;
-  color: var(--bg-dark);
 }
 
+/* Label Tanggal ala Teknologi */
 .experience-card .date {
   display: inline-table;
   font-family: "Poppins", sans-serif;
   font-size: 0.85rem;
   font-weight: 600;
   color: var(--primary-color);
-  background-color: #dbeafe;
+  background-color: rgba(0, 229, 255, 0.1);
   padding: 6px 14px;
   border-radius: 8px;
   margin-bottom: 20px;
+  border: 1px solid rgba(0, 229, 255, 0.2);
 }
 
 .experience-card ul {
@@ -386,18 +400,8 @@ section h2::after {
 }
 
 .achievement-card {
-  background: var(--white);
   padding: 20px;
-  border-radius: var(--radius-card);
-  box-shadow: var(--shadow-sm);
   text-align: center;
-  transition: var(--transition);
-  border: 1px solid #e2e8f0;
-}
-
-.achievement-card:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--shadow-lg);
 }
 
 .achievement-img {
@@ -407,15 +411,17 @@ section h2::after {
   border-radius: 10px;
   margin-bottom: 20px;
   transition: transform 0.4s ease;
+  filter: brightness(0.9);
 }
 
 .achievement-card:hover .achievement-img {
   transform: scale(1.02);
+  filter: brightness(1.1);
 }
 
 .achievement-card p {
   font-weight: 600;
-  color: var(--bg-dark);
+  color: var(--white);
   font-size: 1rem;
 }
 
@@ -427,13 +433,8 @@ section h2::after {
 }
 
 .skill-box {
-  background-color: var(--white);
   padding: 30px 20px;
-  border-radius: var(--radius-card);
   text-align: center;
-  box-shadow: var(--shadow-sm);
-  transition: var(--transition);
-  border: 1px solid #e2e8f0;
   position: relative;
   overflow: hidden;
 }
@@ -444,7 +445,7 @@ section h2::after {
   top: 0;
   left: 0;
   width: 100%;
-  height: 4px;
+  height: 3px;
   background: linear-gradient(
     90deg,
     var(--secondary-color),
@@ -452,11 +453,6 @@ section h2::after {
   );
   transform: scaleX(0);
   transition: transform 0.4s ease;
-}
-
-.skill-box:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--shadow-lg);
 }
 
 .skill-box:hover::after {
@@ -471,44 +467,10 @@ section h2::after {
 
 .skill-box p {
   font-weight: 500;
-  color: var(--text-light);
+  color: var(--text-main);
 }
 
-/* --- 6. CONTACT & FOOTER --- */
-.contact-section {
-  text-align: center;
-  background: linear-gradient(to bottom, var(--bg-main), var(--white));
-  padding: 100px 20px 80px;
-}
-
-.contact-info {
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-  flex-wrap: wrap;
-  margin-top: 30px;
-}
-
-.contact-info p {
-  font-size: 1.1rem;
-  font-weight: 600;
-  background: var(--bg-main);
-  padding: 15px 30px;
-  border-radius: 50px;
-  color: var(--bg-dark);
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.02);
-  border: 1px solid #e2e8f0;
-}
-
-footer {
-  text-align: center;
-  padding: 40px 20px;
-  background-color: var(--bg-dark);
-  color: #94a3b8;
-  font-size: 0.95rem;
-  font-family: "Inter", sans-serif;
-}
-/* --- SECTION SERTIFIKASI V2 (BERBASIS GAMBAR) --- */
+/* --- 6. SECTION SERTIFIKASI V2 --- */
 .certifications-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -516,64 +478,26 @@ footer {
 }
 
 .cert-card-v2 {
-  background-color: var(--white);
-  border-radius: var(--radius-card);
-  box-shadow: var(--shadow-sm);
   overflow: hidden;
-  text-decoration: none; /* Menghilangkan garis bawah link */
+  text-decoration: none;
   color: inherit;
-  border: 1px solid #e2e8f0;
-  transition: var(--transition);
-}
-
-.cert-card-v2:hover {
-  transform: translateY(-8px);
-  box-shadow: var(--shadow-hover);
-  border-color: var(--primary-color);
 }
 
 .cert-img-container {
   position: relative;
   width: 100%;
   height: 180px;
-  background-color: #f1f5f9;
+  background-color: rgba(0, 0, 0, 0.5); /* Gelap untuk kontras */
   overflow: hidden;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .cert-preview-img {
   width: 100%;
   height: 100%;
-  object-fit: contain; /* Agar seluruh gambar sertifikat terlihat tanpa terpotong */
+  object-fit: contain;
   padding: 10px;
   transition: transform 0.5s ease;
-}
-
-/* Efek Overlay saat di-hover */
-.cert-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(15, 23, 42, 0.7); /* Warna gelap transparan */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.cert-overlay span {
-  color: white;
-  font-weight: 600;
-  font-size: 0.9rem;
-  border: 2px solid white;
-  padding: 8px 16px;
-  border-radius: 50px;
-}
-
-.cert-card-v2:hover .cert-overlay {
-  opacity: 1;
 }
 
 .cert-card-v2:hover .cert-preview-img {
@@ -588,7 +512,6 @@ footer {
 .cert-content h3 {
   font-size: 1.1rem;
   margin-bottom: 8px;
-  color: var(--bg-dark);
 }
 
 .cert-issuer {
@@ -602,6 +525,58 @@ footer {
   font-size: 0.85rem;
   color: var(--text-light);
 }
+
+/* --- 7. CONTACT & FOOTER --- */
+.contact-section {
+  text-align: center;
+  background: linear-gradient(to bottom, var(--bg-main), #080b12);
+  padding: 100px 20px 80px;
+}
+
+.contact-info {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+
+.contact-info p {
+  font-size: 1.1rem;
+  font-weight: 600;
+  background: var(--bg-card);
+  padding: 15px 30px;
+  border-radius: 50px;
+  color: var(--white);
+  border: 1px solid var(--border-color);
+  transition: var(--transition);
+}
+
+.contact-info p:hover {
+  border-color: var(--primary-color);
+  box-shadow: var(--glow-shadow);
+  transform: translateY(-2px);
+}
+
+.contact-info a {
+  text-decoration: none;
+  color: var(--primary-color);
+}
+
+.contact-info a:hover {
+  text-decoration: underline;
+  text-shadow: 0 0 8px rgba(0, 229, 255, 0.5);
+}
+
+footer {
+  text-align: center;
+  padding: 40px 20px;
+  background-color: #030406; /* Paling gelap */
+  color: var(--text-light);
+  font-size: 0.95rem;
+  border-top: 1px solid var(--border-color);
+}
+
 /* --- RESPONSIVE MOBILE TWEAKS --- */
 @media (max-width: 768px) {
   .hero-section {
@@ -655,87 +630,82 @@ footer {
     padding: 30px 20px;
     gap: 30px;
   }
-  .service-item p {
-    padding-left: 0;
-  }
-  /* ========================================================
+}
+
+/* ========================================================
    --- KONFIGURASI CETAK PDF & PRINT MEDIA --- 
    ======================================================== */
-  @media print {
-    /* 1. Paksa warna background dan gradient tetap muncul */
-    body,
-    .hero-section,
-    .about-section,
-    .experience-card,
-    .cert-card-v2,
-    .skill-box {
-      -webkit-print-color-adjust: exact !important;
-      print-color-adjust: exact !important;
-    }
+@media print {
+  body,
+  .hero-section,
+  .about-section,
+  .experience-card,
+  .cert-card-v2,
+  .skill-box,
+  .achievement-card {
+    background-color: #0f1523 !important; /* Paksa warna gelap saat diprint */
+    color: #f8fafc !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
 
-    /* 2. Sembunyikan elemen yang tidak perlu di PDF (tombol CTA) */
-    .cta-group {
-      display: none !important;
-    }
+  h1,
+  h2,
+  h3,
+  h4,
+  p,
+  li,
+  span {
+    color: #f8fafc !important; /* Pastikan teks tetap terbaca jika diprint */
+  }
 
-    /* 3. Hindari elemen terpotong (kepotong separuh) di pergantian halaman */
-    .experience-card,
-    .achievement-card,
-    .cert-card-v2,
-    .about-grid,
-    .services-container,
-    .education-card {
-      page-break-inside: avoid !important;
-      break-inside: avoid !important;
-      margin-bottom: 20px !important; /* Jarak aman antar kartu */
-    }
+  .experience-card .date {
+    background-color: transparent !important;
+    border: 1px solid #00e5ff !important;
+    color: #00e5ff !important;
+  }
 
-    /* 4. Sesuaikan padding dan margin untuk menghindari blank space */
-    section {
-      padding: 30px 10px !important;
-      margin: 0 auto !important;
-    }
+  .cta-group {
+    display: none !important;
+  }
 
-    .contact-info a {
-      text-decoration: none;
-      color: inherit;
-    }
-    .contact-info a:hover {
-      text-decoration: underline;
-    } /* 5. Perbaikan Hero Section */
-    .hero-section {
-      padding: 60px 20px 40px !important;
-      /* Hilangkan clip-path karena sering membuat ruang kosong aneh saat dicetak PDF */
-      clip-path: none !important;
-      margin-bottom: 20px !important;
-    }
+  .experience-card,
+  .achievement-card,
+  .cert-card-v2,
+  .about-grid,
+  .services-container,
+  .education-card {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+    margin-bottom: 20px !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  }
 
-    /* 6. Atur Grid agar rapi meskipun dicetak dari HP */
-    /* Jika dari HP biasa jadi 1 kolom memanjang, kita paksa jadi 2 kolom di PDF agar hemat halaman */
-    .experience-grid,
-    .achievements-grid,
-    .certifications-grid {
-      display: grid !important;
-      grid-template-columns: repeat(2, 1fr) !important;
-      gap: 20px !important;
-    }
+  section {
+    padding: 30px 10px !important;
+    margin: 0 auto !important;
+  }
 
-    .about-grid {
-      grid-template-columns: 1fr !important;
-      gap: 20px !important;
-    }
+  .hero-section {
+    padding: 60px 20px 40px !important;
+    clip-path: none !important;
+    margin-bottom: 20px !important;
+  }
 
-    /* 7. Penyesuaian Font dan Shadow (Shadow sering berantakan di PDF) */
-    * {
-      box-shadow: none !important;
-    }
+  .experience-grid,
+  .achievements-grid,
+  .certifications-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 20px !important;
+  }
 
-    h1,
-    h2,
-    h3,
-    h4,
-    p {
-      page-break-after: avoid; /* Jangan memutus halaman tepat setelah judul */
-    }
+  .about-grid {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+
+  * {
+    box-shadow: none !important;
   }
 }
