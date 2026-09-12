@@ -315,6 +315,24 @@ function App() {
             />
             <p>Foto dokumentasi project website posyandu asoka bersama kader</p>
           </div>
+
+          <div className="achievement-card">
+            <img
+              src="/dokumen4.jpg"
+              alt="Pencapaian 4"
+              className="achievement-img"
+            />
+            <p>Juara 1 Lomba Marketing Terbaik Bersama Tim</p>
+          </div>
+
+          <div className="achievement-card">
+            <img
+              src="/dokumen5.jpg"
+              alt="Pencapaian 5"
+              className="achievement-img"
+            />
+            <p>Juara 2 Lomba Editing Jambore Bank Samoah</p>
+          </div>
         </div>
       </section>
 
