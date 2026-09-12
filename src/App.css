@@ -696,7 +696,13 @@ footer {
       margin: 0 auto !important;
     }
 
-    /* 5. Perbaikan Hero Section */
+    .contact-info a {
+      text-decoration: none;
+      color: inherit;
+    }
+    .contact-info a:hover {
+      text-decoration: underline;
+    } /* 5. Perbaikan Hero Section */
     .hero-section {
       padding: 60px 20px 40px !important;
       /* Hilangkan clip-path karena sering membuat ruang kosong aneh saat dicetak PDF */

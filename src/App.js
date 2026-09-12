@@ -448,11 +448,28 @@ function App() {
       </section>
 
       {/* --- BAGIAN KONTAK --- */}
+      {/* --- BAGIAN KONTAK --- */}
       <section id="contact" className="contact-section">
         <h2>Hubungi Saya</h2>
         <div className="contact-info">
-          <p>📧 Email: dimaspratamaadji59@gmail.com</p>
-          <p>📱 Telepon: 089524099174</p>
+          <p>
+            📧 Email:{" "}
+            <a
+              href="mailto:dimaspratamaadji59@gmail.com"
+              target="_blank"
+              rel="noopener noreferrer">
+              dimaspratamaadji59@gmail.com
+            </a>
+          </p>
+          <p>
+            📱 WhatsApp:{" "}
+            <a
+              href="https://wa.me/6289524099174"
+              target="_blank"
+              rel="noopener noreferrer">
+              089524099174
+            </a>
+          </p>
           <p>📍 Lokasi: Jakarta Selatan</p>
         </div>
       </section>
