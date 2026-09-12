@@ -198,7 +198,7 @@ function App() {
               className="project-img"
             />
             <h3>Web Jurnal Trading</h3>
-            <span className="date">Februari 2026 - Sekarang</span>
+            <span className="date">Februari 2026 - Mei 2026</span>
             <ul>
               <li>
                 Mengembangkan platform jurnal trading berbasis web menggunakan
@@ -232,6 +232,55 @@ function App() {
               <li>
                 Memudahkan untuk menonton film berbagai genre dengan tampilan
                 yang menarik dan nyaman untuk ditonton.
+              </li>
+            </ul>
+          </a>
+
+          <a
+            href="https://oldsneakers.store/"
+            target="E-Commerce Old Sneakers"
+            rel="noopener noreferrer"
+            className="experience-card">
+            <img
+              src="/project-ecommerce1.png"
+              alt="Web E-Commerce Old Sneakers"
+              className="project-img"
+            />
+            <h3>Web E-Commerce Old Sneakers</h3>
+            <span className="date">Mei 2026 - Juli 2026</span>
+            <ul>
+              <li>
+                Mengembangkan platform e-commerce berbasis web menggunakan
+                content management system wordpress dan design elementor.
+              </li>
+              <li>
+                Membantu sebuah toko agar berkembang dan meningkatkan penjualan
+                melalui platform e-commerce yang responsif dan menarik.
+              </li>
+            </ul>
+          </a>
+
+          <a
+            href="https://alkamilmuslim.store/"
+            target="E-Commerce Al-Kamil Muslim"
+            rel="noopener noreferrer"
+            className="experience-card">
+            <img
+              src="/project-ecommerce2.png"
+              alt="Web E-Commerce Al-Kamil Muslim"
+              className="project-img"
+            />
+            <h3>Web E-Commerce Al-Kamil Muslim</h3>
+            <span className="date">Mei 2026 - Juli 2026</span>
+            <ul>
+              <li>
+                Mengembangkan platform e-commerce berbasis web menggunakan
+                content management system wordpress dan design elementor dan
+                mengembangkan fitur-fitur baru serta search engine optimization.
+              </li>
+              <li>
+                Membangun digitalisasi penjualan guna meningkatkan visibilitas
+                dan penjualan produk usaha penjualan.
               </li>
             </ul>
           </a>
@@ -345,6 +394,36 @@ function App() {
               <h3>Introduction To Data Analyst</h3>
               <p className="cert-issuer">MySkill</p>
               <p className="cert-date">2023</p>
+            </div>
+          </div>
+
+          <div className="cert-card-v2">
+            <div className="cert-img-container">
+              <img
+                src="/sertifikat6.jpg"
+                alt="Sertifikasi SEO"
+                className="cert-preview-img"
+              />
+            </div>
+            <div className="cert-content">
+              <h3>Web Developer PKM Posyandu</h3>
+              <p className="cert-issuer">PKM BUDI LUHUR</p>
+              <p className="cert-date">2026</p>
+            </div>
+          </div>
+
+          <div className="cert-card-v2">
+            <div className="cert-img-container">
+              <img
+                src="/sertifikat7.jpg"
+                alt="Sertifikasi SEO"
+                className="cert-preview-img"
+              />
+            </div>
+            <div className="cert-content">
+              <h3>Web Developer Specialist</h3>
+              <p className="cert-issuer">ON JOB BUDI LUHUR</p>
+              <p className="cert-date">2026</p>
             </div>
           </div>
         </div>
