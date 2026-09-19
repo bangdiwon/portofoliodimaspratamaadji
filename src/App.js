@@ -7,6 +7,12 @@ const translations = {
     welcome: "Welcome to my portfolio",
     contactBtn: "Contact Me",
     downloadCV: "Download Original CV",
+
+    // Menu Tab
+    menuExp: "Experience",
+    menuAchieve: "Achievements",
+    menuCert: "Certifications",
+
     bgTitle: "Background",
     bgDesc:
       "I am an Information Systems graduate focused on creating data-driven digital solutions. I combine expertise in software engineering (SDLC), database management, and system optimization to build applications that not only function well but also provide real impact for businesses and users.",
@@ -65,6 +71,12 @@ const translations = {
     welcome: "Selamat datang di portofolio saya",
     contactBtn: "Hubungi Saya",
     downloadCV: "Unduh CV Asli",
+
+    // Menu Tab
+    menuExp: "Pengalaman",
+    menuAchieve: "Pencapaian",
+    menuCert: "Sertifikasi",
+
     bgTitle: "Latar Belakang",
     bgDesc:
       "Saya adalah seorang lulusan Sistem Informasi yang berfokus pada penciptaan solusi digital berbasis data. Saya menggabungkan keahlian dalam rekayasa perangkat lunak (SDLC), manajemen database, dan optimasi sistem untuk membangun aplikasi yang tidak hanya berfungsi dengan baik, tetapi juga memberikan dampak nyata bagi bisnis dan pengguna.",
@@ -124,6 +136,9 @@ function App() {
   // State untuk bahasa (default "en" = English)
   const [lang, setLang] = useState("en");
 
+  // State untuk Tab Menu yang sedang aktif
+  const [activeTab, setActiveTab] = useState("experience");
+
   // State untuk modal pop-up gambar
   const [modalImg, setModalImg] = useState(null);
 
@@ -137,9 +152,9 @@ function App() {
 
   return (
     <>
-      {/* --- CSS KHUSUS (Ditempatkan di luar container utama agar position: fixed berfungsi sempurna) --- */}
+      {/* --- CSS KHUSUS --- */}
       <style>{`
-        /* Tombol Bahasa Melayang (Fixed & Tidak Tenggelam) */
+        /* Tombol Bahasa Melayang (Fixed) */
         .lang-toggle-btn {
           position: fixed;
           top: 20px;
@@ -154,7 +169,7 @@ function App() {
           font-family: 'Poppins', sans-serif;
           backdrop-filter: blur(10px);
           -webkit-backdrop-filter: blur(10px);
-          z-index: 999999; /* Z-Index maksimum agar selalu di atas */
+          z-index: 999999;
           transition: all 0.3s ease;
           box-shadow: 0 0 10px rgba(0, 229, 255, 0.2);
         }
@@ -163,6 +178,48 @@ function App() {
           color: #0f1523;
           box-shadow: 0 0 20px rgba(0, 229, 255, 0.6);
           transform: translateY(-2px);
+        }
+
+        /* --- STYLING TAB MENU DI BAWAH LAYANAN --- */
+        .tab-menu-container {
+          display: flex;
+          justify-content: center;
+          gap: 15px;
+          margin: 40px auto 10px;
+          padding: 0 20px;
+          flex-wrap: wrap;
+          max-width: 900px;
+        }
+        .tab-btn {
+          padding: 12px 28px;
+          background: rgba(15, 21, 35, 0.8);
+          color: #94a3b8;
+          border: 1px solid rgba(0, 229, 255, 0.2);
+          border-radius: 30px;
+          cursor: pointer;
+          font-family: 'Poppins', sans-serif;
+          font-size: 1rem;
+          font-weight: 600;
+          transition: all 0.3s ease;
+        }
+        .tab-btn:hover {
+          background: rgba(0, 229, 255, 0.1);
+          color: #00e5ff;
+        }
+        .tab-btn.active {
+          background: #00e5ff;
+          color: #0f1523;
+          border-color: #00e5ff;
+          box-shadow: 0 0 15px rgba(0, 229, 255, 0.5);
+        }
+
+        /* Efek Fade In saat Tab berpindah */
+        .fade-in-tab {
+          animation: fadeInTab 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+        @keyframes fadeInTab {
+          from { opacity: 0; transform: translateY(15px); }
+          to { opacity: 1; transform: translateY(0); }
         }
 
         /* Styling Modal Pop-up Gambar */
@@ -207,9 +264,14 @@ function App() {
           transition: 0.3s;
         }
         .close-modal:hover { color: #00e5ff; text-shadow: 0 0 15px #00e5ff; }
+
+        @media (max-width: 768px) {
+          .tab-menu-container { gap: 10px; }
+          .tab-btn { padding: 10px 20px; font-size: 0.9rem; flex-grow: 1; }
+        }
       `}</style>
 
-      {/* --- TOMBOL BAHASA (Berada di luar kontainer agar tidak kena efek clip-path) --- */}
+      {/* --- TOMBOL BAHASA --- */}
       <button onClick={toggleLanguage} className="lang-toggle-btn">
         {lang === "en" ? "🇮🇩 ID" : "🇬🇧 EN"}
       </button>
@@ -309,331 +371,360 @@ function App() {
           </div>
         </section>
 
-        {/* --- BAGIAN PENGALAMAN & PROJECT --- */}
-        <section className="experience-section">
-          <h2>{t.expTitle}</h2>
-          <div className="experience-grid">
-            <a
-              href="https://posyanduasoka.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="experience-card">
-              <img
-                src="/project-posyandu.png"
-                alt="PKM Posyandu Asoka"
-                className="project-img"
-              />
-              <h3>Web Development PKM Posyandu</h3>
-              <span className="date">{t.datePosyandu}</span>
-              <ul>
-                <li>{t.posyandu1}</li>
-                <li>{t.posyandu2}</li>
-              </ul>
-            </a>
+        {/* --- MENU TAB (Berada di Bawah Layanan) --- */}
+        <div className="tab-menu-container">
+          <button
+            className={`tab-btn ${activeTab === "experience" ? "active" : ""}`}
+            onClick={() => setActiveTab("experience")}>
+            {t.menuExp}
+          </button>
+          <button
+            className={`tab-btn ${activeTab === "achievements" ? "active" : ""}`}
+            onClick={() => setActiveTab("achievements")}>
+            {t.menuAchieve}
+          </button>
+          <button
+            className={`tab-btn ${activeTab === "certifications" ? "active" : ""}`}
+            onClick={() => setActiveTab("certifications")}>
+            {t.menuCert}
+          </button>
+        </div>
 
-            <a
-              href="https://scsyifacollection.store"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="experience-card">
-              <img
-                src="/project-ecommerce.png"
-                alt="Toko SC Syifa Collection"
-                className="project-img"
-              />
-              <h3>Web E-Commerce SC Syifa</h3>
-              <span className="date">{t.dateSc}</span>
-              <ul>
-                <li>{t.sc1}</li>
-                <li>{t.sc2}</li>
-              </ul>
-            </a>
+        {/* --- KONTEN TAB (Berganti sesuai menu yang diklik) --- */}
+        <div className="tab-content">
+          {/* TAB 1: PENGALAMAN */}
+          {activeTab === "experience" && (
+            <section className="experience-section fade-in-tab">
+              <h2>{t.expTitle}</h2>
+              <div className="experience-grid">
+                <a
+                  href="https://posyanduasoka.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="experience-card">
+                  <img
+                    src="/project-posyandu.png"
+                    alt="PKM Posyandu Asoka"
+                    className="project-img"
+                  />
+                  <h3>Web Development PKM Posyandu</h3>
+                  <span className="date">{t.datePosyandu}</span>
+                  <ul>
+                    <li>{t.posyandu1}</li>
+                    <li>{t.posyandu2}</li>
+                  </ul>
+                </a>
 
-            <a
-              href="https://ft.budiluhur.ac.id"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="experience-card">
-              <img
-                src="/project-onjob.png"
-                alt="Web Specialist On Job"
-                className="project-img"
-              />
-              <h3>Web Specialist On Job</h3>
-              <span className="date">{t.dateFt}</span>
-              <ul>
-                <li>{t.ft1}</li>
-                <li>{t.ft2}</li>
-              </ul>
-            </a>
+                <a
+                  href="https://scsyifacollection.store"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="experience-card">
+                  <img
+                    src="/project-ecommerce.png"
+                    alt="Toko SC Syifa Collection"
+                    className="project-img"
+                  />
+                  <h3>Web E-Commerce SC Syifa</h3>
+                  <span className="date">{t.dateSc}</span>
+                  <ul>
+                    <li>{t.sc1}</li>
+                    <li>{t.sc2}</li>
+                  </ul>
+                </a>
 
-            <a
-              href="https://jurnaltradingdimas.vercel.app"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="experience-card">
-              <img
-                src="/project-jurnaltrading.png"
-                alt="Web Jurnal Trading"
-                className="project-img"
-              />
-              <h3>Web Jurnal Trading</h3>
-              <span className="date">{t.dateJurnal}</span>
-              <ul>
-                <li>{t.jurnal1}</li>
-                <li>{t.jurnal2}</li>
-              </ul>
-            </a>
+                <a
+                  href="https://ft.budiluhur.ac.id"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="experience-card">
+                  <img
+                    src="/project-onjob.png"
+                    alt="Web Specialist On Job"
+                    className="project-img"
+                  />
+                  <h3>Web Specialist On Job</h3>
+                  <span className="date">{t.dateFt}</span>
+                  <ul>
+                    <li>{t.ft1}</li>
+                    <li>{t.ft2}</li>
+                  </ul>
+                </a>
 
-            <a
-              href="https://gudangmovie.vercel.app/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="experience-card">
-              <img
-                src="/project-gudangfilm.png"
-                alt="Gudang Film Cinema Stream"
-                className="project-img"
-              />
-              <h3>Gudang Film Cinema Stream</h3>
-              <span className="date">{t.dateGudang}</span>
-              <ul>
-                <li>{t.gudang1}</li>
-                <li>{t.gudang2}</li>
-              </ul>
-            </a>
+                <a
+                  href="https://jurnaltradingdimas.vercel.app"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="experience-card">
+                  <img
+                    src="/project-jurnaltrading.png"
+                    alt="Web Jurnal Trading"
+                    className="project-img"
+                  />
+                  <h3>Web Jurnal Trading</h3>
+                  <span className="date">{t.dateJurnal}</span>
+                  <ul>
+                    <li>{t.jurnal1}</li>
+                    <li>{t.jurnal2}</li>
+                  </ul>
+                </a>
 
-            <a
-              href="https://oldsneakers.store/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="experience-card">
-              <img
-                src="/project-ecommerce1.png"
-                alt="Web E-Commerce Old Sneakers"
-                className="project-img"
-              />
-              <h3>Web E-Commerce Old Sneakers</h3>
-              <span className="date">{t.dateOld}</span>
-              <ul>
-                <li>{t.old1}</li>
-                <li>{t.old2}</li>
-              </ul>
-            </a>
+                <a
+                  href="https://gudangmovie.vercel.app/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="experience-card">
+                  <img
+                    src="/project-gudangfilm.png"
+                    alt="Gudang Film Cinema Stream"
+                    className="project-img"
+                  />
+                  <h3>Gudang Film Cinema Stream</h3>
+                  <span className="date">{t.dateGudang}</span>
+                  <ul>
+                    <li>{t.gudang1}</li>
+                    <li>{t.gudang2}</li>
+                  </ul>
+                </a>
 
-            <a
-              href="https://alkamilmuslim.store/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="experience-card">
-              <img
-                src="/project-ecommerce2.png"
-                alt="Web E-Commerce Al-Kamil Muslim"
-                className="project-img"
-              />
-              <h3>Web E-Commerce Al-Kamil Muslim</h3>
-              <span className="date">{t.dateAl}</span>
-              <ul>
-                <li>{t.al1}</li>
-                <li>{t.al2}</li>
-              </ul>
-            </a>
-          </div>
-        </section>
+                <a
+                  href="https://oldsneakers.store/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="experience-card">
+                  <img
+                    src="/project-ecommerce1.png"
+                    alt="Web E-Commerce Old Sneakers"
+                    className="project-img"
+                  />
+                  <h3>Web E-Commerce Old Sneakers</h3>
+                  <span className="date">{t.dateOld}</span>
+                  <ul>
+                    <li>{t.old1}</li>
+                    <li>{t.old2}</li>
+                  </ul>
+                </a>
 
-        {/* --- SECTION PENCAPAIAN --- */}
-        <section className="achievements-section">
-          <h2>{t.achieveTitle}</h2>
-          <div className="achievements-grid">
-            <div
-              className="achievement-card"
-              onClick={() => setModalImg("/dokumen1.png")}
-              style={{ cursor: "pointer" }}>
-              <img
-                src="/dokumen1.png"
-                alt="Pencapaian 1"
-                className="achievement-img"
-              />
-              <p>{t.achieve1}</p>
-            </div>
-            <div
-              className="achievement-card"
-              onClick={() => setModalImg("/dokumen2.png")}
-              style={{ cursor: "pointer" }}>
-              <img
-                src="/dokumen2.png"
-                alt="Pencapaian 2"
-                className="achievement-img"
-              />
-              <p>{t.achieve2}</p>
-            </div>
-            <div
-              className="achievement-card"
-              onClick={() => setModalImg("/dokumen3.png")}
-              style={{ cursor: "pointer" }}>
-              <img
-                src="/dokumen3.png"
-                alt="Pencapaian 3"
-                className="achievement-img"
-              />
-              <p>{t.achieve3}</p>
-            </div>
-            <div
-              className="achievement-card"
-              onClick={() => setModalImg("/dokumen4.jpg")}
-              style={{ cursor: "pointer" }}>
-              <img
-                src="/dokumen4.jpg"
-                alt="Pencapaian 4"
-                className="achievement-img"
-              />
-              <p>{t.achieve4}</p>
-            </div>
-            <div
-              className="achievement-card"
-              onClick={() => setModalImg("/dokumen5.jpg")}
-              style={{ cursor: "pointer" }}>
-              <img
-                src="/dokumen5.jpg"
-                alt="Pencapaian 5"
-                className="achievement-img"
-              />
-              <p>{t.achieve5}</p>
-            </div>
-          </div>
-        </section>
+                <a
+                  href="https://alkamilmuslim.store/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="experience-card">
+                  <img
+                    src="/project-ecommerce2.png"
+                    alt="Web E-Commerce Al-Kamil Muslim"
+                    className="project-img"
+                  />
+                  <h3>Web E-Commerce Al-Kamil Muslim</h3>
+                  <span className="date">{t.dateAl}</span>
+                  <ul>
+                    <li>{t.al1}</li>
+                    <li>{t.al2}</li>
+                  </ul>
+                </a>
+              </div>
+            </section>
+          )}
 
-        {/* --- SECTION SERTIFIKASI --- */}
-        <section className="certifications-section">
-          <h2>{t.certTitle}</h2>
-          <div className="certifications-grid">
-            <div
-              className="cert-card-v2"
-              onClick={() => setModalImg("/sertifikat1.jpg")}
-              style={{ cursor: "pointer" }}>
-              <div className="cert-img-container">
-                <img
-                  src="/sertifikat1.jpg"
-                  alt="Sertifikasi Web Development"
-                  className="cert-preview-img"
-                />
+          {/* TAB 2: PENCAPAIAN */}
+          {activeTab === "achievements" && (
+            <section className="achievements-section fade-in-tab">
+              <h2>{t.achieveTitle}</h2>
+              <div className="achievements-grid">
+                <div
+                  className="achievement-card"
+                  onClick={() => setModalImg("/dokumen1.png")}
+                  style={{ cursor: "pointer" }}>
+                  <img
+                    src="/dokumen1.png"
+                    alt="Pencapaian 1"
+                    className="achievement-img"
+                  />
+                  <p>{t.achieve1}</p>
+                </div>
+                <div
+                  className="achievement-card"
+                  onClick={() => setModalImg("/dokumen2.png")}
+                  style={{ cursor: "pointer" }}>
+                  <img
+                    src="/dokumen2.png"
+                    alt="Pencapaian 2"
+                    className="achievement-img"
+                  />
+                  <p>{t.achieve2}</p>
+                </div>
+                <div
+                  className="achievement-card"
+                  onClick={() => setModalImg("/dokumen3.png")}
+                  style={{ cursor: "pointer" }}>
+                  <img
+                    src="/dokumen3.png"
+                    alt="Pencapaian 3"
+                    className="achievement-img"
+                  />
+                  <p>{t.achieve3}</p>
+                </div>
+                <div
+                  className="achievement-card"
+                  onClick={() => setModalImg("/dokumen4.jpg")}
+                  style={{ cursor: "pointer" }}>
+                  <img
+                    src="/dokumen4.jpg"
+                    alt="Pencapaian 4"
+                    className="achievement-img"
+                  />
+                  <p>{t.achieve4}</p>
+                </div>
+                <div
+                  className="achievement-card"
+                  onClick={() => setModalImg("/dokumen5.jpg")}
+                  style={{ cursor: "pointer" }}>
+                  <img
+                    src="/dokumen5.jpg"
+                    alt="Pencapaian 5"
+                    className="achievement-img"
+                  />
+                  <p>{t.achieve5}</p>
+                </div>
               </div>
-              <div className="cert-content">
-                <h3>Progate x Himti Budi Luhur Coding Bootcamp</h3>
-                <p className="cert-issuer">Progate</p>
-                <p className="cert-date">2022</p>
-              </div>
-            </div>
+            </section>
+          )}
 
-            <div
-              className="cert-card-v2"
-              onClick={() => setModalImg("/sertifikat2.jpg")}
-              style={{ cursor: "pointer" }}>
-              <div className="cert-img-container">
-                <img
-                  src="/sertifikat2.jpg"
-                  alt="Sertifikasi SEO"
-                  className="cert-preview-img"
-                />
-              </div>
-              <div className="cert-content">
-                <h3>Frontend Development</h3>
-                <p className="cert-issuer">MySkill</p>
-                <p className="cert-date">2023</p>
-              </div>
-            </div>
+          {/* TAB 3: SERTIFIKASI */}
+          {activeTab === "certifications" && (
+            <section className="certifications-section fade-in-tab">
+              <h2>{t.certTitle}</h2>
+              <div className="certifications-grid">
+                <div
+                  className="cert-card-v2"
+                  onClick={() => setModalImg("/sertifikat1.jpg")}
+                  style={{ cursor: "pointer" }}>
+                  <div className="cert-img-container">
+                    <img
+                      src="/sertifikat1.jpg"
+                      alt="Sertifikasi Web Development"
+                      className="cert-preview-img"
+                    />
+                  </div>
+                  <div className="cert-content">
+                    <h3>Progate x Himti Budi Luhur Coding Bootcamp</h3>
+                    <p className="cert-issuer">Progate</p>
+                    <p className="cert-date">2022</p>
+                  </div>
+                </div>
 
-            <div
-              className="cert-card-v2"
-              onClick={() => setModalImg("/sertifikat3.jpg")}
-              style={{ cursor: "pointer" }}>
-              <div className="cert-img-container">
-                <img
-                  src="/sertifikat3.jpg"
-                  alt="Sertifikasi SEO"
-                  className="cert-preview-img"
-                />
-              </div>
-              <div className="cert-content">
-                <h3>Social Media Strategy</h3>
-                <p className="cert-issuer">MySkill</p>
-                <p className="cert-date">2023</p>
-              </div>
-            </div>
+                <div
+                  className="cert-card-v2"
+                  onClick={() => setModalImg("/sertifikat2.jpg")}
+                  style={{ cursor: "pointer" }}>
+                  <div className="cert-img-container">
+                    <img
+                      src="/sertifikat2.jpg"
+                      alt="Sertifikasi SEO"
+                      className="cert-preview-img"
+                    />
+                  </div>
+                  <div className="cert-content">
+                    <h3>Frontend Development</h3>
+                    <p className="cert-issuer">MySkill</p>
+                    <p className="cert-date">2023</p>
+                  </div>
+                </div>
 
-            <div
-              className="cert-card-v2"
-              onClick={() => setModalImg("/sertifikat4.jpg")}
-              style={{ cursor: "pointer" }}>
-              <div className="cert-img-container">
-                <img
-                  src="/sertifikat4.jpg"
-                  alt="Sertifikasi SEO"
-                  className="cert-preview-img"
-                />
-              </div>
-              <div className="cert-content">
-                <h3>UI/UX Fundamental</h3>
-                <p className="cert-issuer">MySkill</p>
-                <p className="cert-date">2023</p>
-              </div>
-            </div>
+                <div
+                  className="cert-card-v2"
+                  onClick={() => setModalImg("/sertifikat3.jpg")}
+                  style={{ cursor: "pointer" }}>
+                  <div className="cert-img-container">
+                    <img
+                      src="/sertifikat3.jpg"
+                      alt="Sertifikasi SEO"
+                      className="cert-preview-img"
+                    />
+                  </div>
+                  <div className="cert-content">
+                    <h3>Social Media Strategy</h3>
+                    <p className="cert-issuer">MySkill</p>
+                    <p className="cert-date">2023</p>
+                  </div>
+                </div>
 
-            <div
-              className="cert-card-v2"
-              onClick={() => setModalImg("/sertifikat5.jpg")}
-              style={{ cursor: "pointer" }}>
-              <div className="cert-img-container">
-                <img
-                  src="/sertifikat5.jpg"
-                  alt="Sertifikasi React.js"
-                  className="cert-preview-img"
-                />
-              </div>
-              <div className="cert-content">
-                <h3>Introduction To Data Analyst</h3>
-                <p className="cert-issuer">MySkill</p>
-                <p className="cert-date">2023</p>
-              </div>
-            </div>
+                <div
+                  className="cert-card-v2"
+                  onClick={() => setModalImg("/sertifikat4.jpg")}
+                  style={{ cursor: "pointer" }}>
+                  <div className="cert-img-container">
+                    <img
+                      src="/sertifikat4.jpg"
+                      alt="Sertifikasi SEO"
+                      className="cert-preview-img"
+                    />
+                  </div>
+                  <div className="cert-content">
+                    <h3>UI/UX Fundamental</h3>
+                    <p className="cert-issuer">MySkill</p>
+                    <p className="cert-date">2023</p>
+                  </div>
+                </div>
 
-            <div
-              className="cert-card-v2"
-              onClick={() => setModalImg("/sertifikat6.jpg")}
-              style={{ cursor: "pointer" }}>
-              <div className="cert-img-container">
-                <img
-                  src="/sertifikat6.jpg"
-                  alt="Sertifikasi SEO"
-                  className="cert-preview-img"
-                />
-              </div>
-              <div className="cert-content">
-                <h3>Web Developer PKM Posyandu</h3>
-                <p className="cert-issuer">PKM BUDI LUHUR</p>
-                <p className="cert-date">2026</p>
-              </div>
-            </div>
+                <div
+                  className="cert-card-v2"
+                  onClick={() => setModalImg("/sertifikat5.jpg")}
+                  style={{ cursor: "pointer" }}>
+                  <div className="cert-img-container">
+                    <img
+                      src="/sertifikat5.jpg"
+                      alt="Sertifikasi React.js"
+                      className="cert-preview-img"
+                    />
+                  </div>
+                  <div className="cert-content">
+                    <h3>Introduction To Data Analyst</h3>
+                    <p className="cert-issuer">MySkill</p>
+                    <p className="cert-date">2023</p>
+                  </div>
+                </div>
 
-            <div
-              className="cert-card-v2"
-              onClick={() => setModalImg("/sertifikat7.jpg")}
-              style={{ cursor: "pointer" }}>
-              <div className="cert-img-container">
-                <img
-                  src="/sertifikat7.jpg"
-                  alt="Sertifikasi SEO"
-                  className="cert-preview-img"
-                />
+                <div
+                  className="cert-card-v2"
+                  onClick={() => setModalImg("/sertifikat6.jpg")}
+                  style={{ cursor: "pointer" }}>
+                  <div className="cert-img-container">
+                    <img
+                      src="/sertifikat6.jpg"
+                      alt="Sertifikasi SEO"
+                      className="cert-preview-img"
+                    />
+                  </div>
+                  <div className="cert-content">
+                    <h3>Web Developer PKM Posyandu</h3>
+                    <p className="cert-issuer">PKM BUDI LUHUR</p>
+                    <p className="cert-date">2026</p>
+                  </div>
+                </div>
+
+                <div
+                  className="cert-card-v2"
+                  onClick={() => setModalImg("/sertifikat7.jpg")}
+                  style={{ cursor: "pointer" }}>
+                  <div className="cert-img-container">
+                    <img
+                      src="/sertifikat7.jpg"
+                      alt="Sertifikasi SEO"
+                      className="cert-preview-img"
+                    />
+                  </div>
+                  <div className="cert-content">
+                    <h3>Web Developer Specialist</h3>
+                    <p className="cert-issuer">ON JOB BUDI LUHUR</p>
+                    <p className="cert-date">2026</p>
+                  </div>
+                </div>
               </div>
-              <div className="cert-content">
-                <h3>Web Developer Specialist</h3>
-                <p className="cert-issuer">ON JOB BUDI LUHUR</p>
-                <p className="cert-date">2026</p>
-              </div>
-            </div>
-          </div>
-        </section>
+            </section>
+          )}
+        </div>
+        {/* --- AKHIR KONTEN TAB --- */}
 
         {/* --- BAGIAN KONTAK --- */}
         <section id="contact" className="contact-section">
