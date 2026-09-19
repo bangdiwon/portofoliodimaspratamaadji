@@ -313,8 +313,8 @@ function App() {
               {t.contactBtn}
             </a>
             <a
-              href="CV_DIMAS.pdf"
-              download="CV_DIMAS.pdf"
+              href="DimasPratamaAdji-SistemInformasi.pdf"
+              download="DimasPratamaAdji-SistemInformasi.pdf"
               className="cta-button outline">
               {t.downloadCV}
             </a>
